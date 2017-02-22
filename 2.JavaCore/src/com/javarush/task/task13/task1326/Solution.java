@@ -12,8 +12,7 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String fileName = reader.readLine();
-
-        BufferedReader in = new BufferedReader(new FileReader(fileName));
+        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
         ArrayList<Integer> list = new ArrayList<Integer>();
         while (in.ready()){
             int number = Integer.parseInt(in.readLine());
@@ -22,10 +21,7 @@ public class Solution {
         Collections.sort(list);
         for (Integer x : list)
             System.out.println(x);
-        FileInputStream inn = new FileInputStream("MyFile.txt");
         reader.close();
         in.close();
-        inn.close();
-        // напишите тут ваш код
     }
 }
