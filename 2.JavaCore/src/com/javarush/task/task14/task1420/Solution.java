@@ -15,6 +15,7 @@ public class Solution {
         a = Integer.parseInt(reader.readLine());
             if (a<=0) throw new Exception();
             b = Integer.parseInt(reader.readLine());
+
             if (b<=0) throw new Exception();
             while (a!=0 && b!=0)
                 if (a > b) a = a % b; else b = b % a;
