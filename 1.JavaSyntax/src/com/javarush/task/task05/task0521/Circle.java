@@ -17,12 +17,8 @@ public class Circle {
     }
 
     public Circle(double x, double y) {
-        new Circle(x, y, 10);
-        this.x = x;
-        this.radius = this;
-        this.y = y;
-
         //напишите тут ваш код
+        this(x , y, 10);
     }
 
     public Circle() {
