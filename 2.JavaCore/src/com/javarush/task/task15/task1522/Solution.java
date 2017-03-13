@@ -10,22 +10,33 @@ import java.io.InputStreamReader;
 
 public class Solution {
     public static void main(String[] args) {
-
+        System.out.println(thePlanet);
     }
 
     public static Planet thePlanet;
+static {
 
-
-    static {
-
+    try {
+        readKeyFromConsoleAndInitPlanet();
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
 
     //add static block here - добавьте статический блок тут
 
-    public static void readKeyFromConsoleAndInitPlanet() {
-        BufferedReader reader new BufferedReader(new InputStreamReader(System.in));
+    public static void readKeyFromConsoleAndInitPlanet() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String s = reader.readLine();
-        if s.equals("sun") thePlantet = new Sun();
+            switch (s){
+                case Planet.SUN : thePlanet = Sun.getInstance();
+                    break;
+                case Planet.EARTH : thePlanet = Earth.getInstance();
+                    break;
+                case Planet.MOON : thePlanet = Moon.getInstance();
+                    break;
+                default : thePlanet = null;
+        }
 
         // implement step #5 here - реализуйте задание №5 тут
     }
