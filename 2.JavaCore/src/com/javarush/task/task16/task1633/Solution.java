@@ -12,9 +12,6 @@ public class Solution {
         threadA.start();
         threadB.start();
 
-        threadA.setUncaughtExceptionHandler(handler);
-        threadB.setUncaughtExceptionHandler(handler);
-
         threadA.interrupt();
         threadB.interrupt();
     }
@@ -28,8 +25,9 @@ public class Solution {
         public void run() {
             try {
                 Thread.sleep(3000);
+
             } catch (InterruptedException x) {
-                throw new RuntimeException("My exception message");
+                handler.uncaughtException(Thread.currentThread(), new RuntimeException("My exception message"));
             }
         }
     }
