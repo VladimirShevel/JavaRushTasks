@@ -22,8 +22,8 @@ public class Solution {
        switch (args[0]){
            case "-c" : addPerson(args);
            break;
-//           case "-u" : refreshPersonByID(args);
-//           break;
+          case "-u" : refreshPersonByID(args);
+           break;
 //           case
 
 
@@ -53,20 +53,12 @@ public class Solution {
         }
     }
     public static void refreshPersonByID(String[] arg) throws ParseException {
+        synchronized (allPeople){
         Person person = allPeople.get(Integer.parseInt(arg[1]));
-        for (int i = 2; i < arg.length - 1;) {
-
-            String name = arg[i];
-            i++;
-            String sex = arg[i];
-            i++;
-            Date db = new SimpleDateFormat("dd/MM/yyyy").parse(arg[i]);
-            i++;
-
-            synchronized (allPeople) {
-                Person person = new Person();
-                allPeople.set(arg[1], if (sex.equals("м")) Person person = (Person.createMale(name , db)); else allPeople.add(Person.createFemale(name , db));)
-            }  }
+        person.setName(arg[2]);
+        if (arg[3].equals("ж")) person.setSex(Sex.FEMALE); else person.setSex(Sex.MALE);
+        person.setBirthDay(new SimpleDateFormat("dd/MM/yyyy").parse(arg[4]));
+        allPeople.set(Integer.parseInt(arg[1]),person);
         }
     }
 }
